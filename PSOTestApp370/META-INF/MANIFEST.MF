@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: PSOTestApp370
+Bundle-SymbolicName: PSOTestApp370
+Bundle-Version: 1.0.0.qualifier
+Export-Package: com.example.psotestapp370
