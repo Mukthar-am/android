@@ -56,6 +56,7 @@ public class Utils {
 	public boolean setAdServerURI(IMAdInterstitial adView, String serverUrl) {
 		boolean flag = false;
 		Method method;
+		Log.d(LOG_TAG, "view - " + adView.toString() + " server - " + serverUrl);
 		try {
 			method = (Method) adView.getClass().getDeclaredMethod(
 					"setAdServerUrl", String.class);

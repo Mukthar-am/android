@@ -107,91 +107,91 @@ public class BannerTests370 extends ActivityInstrumentationTestCase2<InMobiAdAct
 	} // end testBannerAds
 
 
-//	// ################################################################################
-//	// Test cases for banner ads
-//	@Test
-//	public void testBannerAds_Async_Slot300x250_Creative320x50() {
-//		String slotSize = "300x250";
-//		String creative = "320x50";		// These variables are to be parameterized
-//		String releaseType = "imai_async";		// These variables are to be parameterized
-//		
-//		String testCaseId = getName();
-//
-//		this.inflateLayout(slotSize);	// inflating layout based on slot-size
-//
-//		urlParams.put("testcaseid", testCaseId);
-//		urlParams.put("release", releaseType);
-//		urlParams.put("adtype", adtype);
-//		urlParams.put("slotid", slotSize);
-//		urlParams.put("creative", creative);
-//
-//		String adServerURL = utils.buildAdServerURI(urlParams);
-//		Log.d(LOG_TAG, "URL: " + adServerURL);
-//
-//		// setting ad-server custom url, by calling private method (Use of reflectin here)
-//		utils.setAdServerURI(imAdBannerViewObj, adServerURL);
-//
-//		IMAdRequest mAdRequest = new IMAdRequest();
-//		//imAdBannerViewObj.setAdSize(IMAdView.INMOBI_AD_UNIT_320X50);
-//		imAdBannerViewObj.setAppId(APPID); // get app obj
-//		imAdBannerViewObj.setIMAdRequest(mAdRequest);
-//		imAdBannerViewObj.setRefreshInterval(IMAdView.REFRESH_INTERVAL_OFF);
-//
-//		imAdBannerViewObj.loadNewAd();
-//		utils.waitThread(3000);
-//
-//		String snapshotFile = getName() + testCaseId.toString();
-//		solo.takeScreenshot(snapshotFile);
-//		utils.waitThread(2000);
-//
-//		// gen click event
-//		solo.clickOnView(imAdBannerViewObj);
-//		utils.waitThread(2000);
-//		//imAdBannerViewObj.destroy();
-//
-//	} // end testBannerAds
-//
-//	// ################################################################################
-//	// Test cases for banner ads
-//	@Test
-//	public void testBannerAds_Async_Slot320x48_Creative320x50() {
-//		String slotSize = "320x48";
-//		String creative = "320x50";				// These variables are to be parameterized
-//		String releaseType = "imai_async";		// These variables are to be parameterized
-//		String testCaseId = getName();
-//		
-//		this.inflateLayout(slotSize);			// inflating layout based on slot-size
-//
-//		urlParams.put("testcaseid", testCaseId);
-//		urlParams.put("release", releaseType);
-//		urlParams.put("adtype", adtype);
-//		urlParams.put("slotid", slotSize);
-//		urlParams.put("creative", creative);
-//
-//		String adServerURL = utils.buildAdServerURI(urlParams);
-//		Log.d(LOG_TAG, "URL: " + adServerURL);
-//
-//		// setting ad-server custom url, by calling private method (Use of reflectin here)
-//		utils.setAdServerURI(imAdBannerViewObj, adServerURL);
-//
-//		IMAdRequest mAdRequest = new IMAdRequest();
-//		//imAdBannerViewObj.setAdSize(IMAdView.INMOBI_AD_UNIT_300X250);
-//		imAdBannerViewObj.setAppId(APPID); // get app obj
-//		imAdBannerViewObj.setIMAdRequest(mAdRequest);
-//		imAdBannerViewObj.setRefreshInterval(IMAdView.REFRESH_INTERVAL_OFF);
-//
-//		imAdBannerViewObj.loadNewAd();
-//		utils.waitThread(5000);
-//
-//		String snapshotFile = getName() + testCaseId.toString();
-//		solo.takeScreenshot(snapshotFile);
-//
-//		// gen click event
-//		solo.clickOnView(imAdBannerViewObj);
-//		utils.waitThread(3000);
-//		//imAdBannerViewObj.destroy();
-//
-//	} // end testBannerAds
+	// ################################################################################
+	// Test cases for banner ads
+	@Test
+	public void testBannerAds_Async_Slot300x250_Creative320x50() {
+		String slotSize = "300x250";
+		String creative = "320x50";		// These variables are to be parameterized
+		String releaseType = "imai_async";		// These variables are to be parameterized
+		
+		String testCaseId = getName();
+
+		this.inflateLayout(slotSize);	// inflating layout based on slot-size
+
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+
+		String adServerURL = utils.buildAdServerURI(urlParams);
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		// setting ad-server custom url, by calling private method (Use of reflectin here)
+		utils.setAdServerURI(imAdBannerViewObj, adServerURL);
+
+		IMAdRequest mAdRequest = new IMAdRequest();
+		//imAdBannerViewObj.setAdSize(IMAdView.INMOBI_AD_UNIT_320X50);
+		imAdBannerViewObj.setAppId(APPID); // get app obj
+		imAdBannerViewObj.setIMAdRequest(mAdRequest);
+		imAdBannerViewObj.setRefreshInterval(IMAdView.REFRESH_INTERVAL_OFF);
+
+		imAdBannerViewObj.loadNewAd();
+		utils.waitThread(3000);
+
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+		utils.waitThread(2000);
+
+		// gen click event
+		solo.clickOnView(imAdBannerViewObj);
+		utils.waitThread(2000);
+		//imAdBannerViewObj.destroy();
+
+	} // end testBannerAds
+
+	// ################################################################################
+	// Test cases for banner ads
+	@Test
+	public void testBannerAds_Async_Slot320x48_Creative320x50() {
+		String slotSize = "320x48";
+		String creative = "320x50";				// These variables are to be parameterized
+		String releaseType = "imai_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+		
+		this.inflateLayout(slotSize);			// inflating layout based on slot-size
+
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+
+		String adServerURL = utils.buildAdServerURI(urlParams);
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		// setting ad-server custom url, by calling private method (Use of reflectin here)
+		utils.setAdServerURI(imAdBannerViewObj, adServerURL);
+
+		IMAdRequest mAdRequest = new IMAdRequest();
+		//imAdBannerViewObj.setAdSize(IMAdView.INMOBI_AD_UNIT_300X250);
+		imAdBannerViewObj.setAppId(APPID); // get app obj
+		imAdBannerViewObj.setIMAdRequest(mAdRequest);
+		imAdBannerViewObj.setRefreshInterval(IMAdView.REFRESH_INTERVAL_OFF);
+
+		imAdBannerViewObj.loadNewAd();
+		utils.waitThread(5000);
+
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// gen click event
+		solo.clickOnView(imAdBannerViewObj);
+		utils.waitThread(3000);
+		//imAdBannerViewObj.destroy();
+
+	} // end testBannerAds
 
 	// ################################################################################
 	// custom written method for setting QA url for bannerAd
