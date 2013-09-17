@@ -17,7 +17,7 @@ public class BannerTestSuite extends TestSuite {
 		BannerTests370 bannerTests = new BannerTests370();
 		
 		String testPrefix = "testBannerAds";
-		String[] slotList = { "320x50", "320x48", "300x250"};
+		String[] slotList = { "320x50" };//, "320x48", "300x250"};
 		String[] creativeList = { "320x50" };
 		
 		/*	// use this for full test runs, when implemented... (Mukthar)
