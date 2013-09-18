@@ -5,13 +5,14 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.app.Activity;
 import android.os.Build;
 import android.os.Looper;
 import android.util.Log;
 
 import com.inmobi.androidsdk.IMAdInterstitial;
+import com.inmobi.androidsdk.IMAdInterstitial.State;
 import com.inmobi.androidsdk.IMAdView;
-import com.inmobi.commons.internal.Log.INTERNAL_LOG_LEVEL;
 
 public class Utils {
 
@@ -22,6 +23,25 @@ public class Utils {
 		// TODO Auto-generated method stub
 	}
 
+	
+	
+	// ##############################################################################################################################
+	public void loadAndShowInterstitialAd(final IMAdInterstitial imAdInterstitialViewObj, Activity testActivity) {
+		imAdInterstitialViewObj.loadNewAd();
+		this.waitThread(5000);
+		
+		testActivity.runOnUiThread(new Runnable() {
+			public void run() {
+				if (imAdInterstitialViewObj.getState() == State.READY) {
+					imAdInterstitialViewObj.show();
+//					waitThread(3000);
+				}
+			}
+		});
+		
+		this.waitThread(3000);
+		
+	}
 
 	// #############################################################################################################################
 	/*
@@ -74,8 +94,7 @@ public class Utils {
 		}
 		return flag;
 	}
-	
-	
+
 	// #############################################################################################################################
 	/*
 	 * constructing ad-server url, runtime.

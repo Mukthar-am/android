@@ -33,7 +33,7 @@ public class BannerTests370 extends ActivityInstrumentationTestCase2<InMobiAdAct
 	public String slotSize = "";
 	private String adtype = "banner";
 	public String LOG_TAG = "PSOTEST";		// logger tag
-	private String HOSTIP = "10.14.126.161";
+	private String HOSTIP = "10.14.119.58";
 	private String PORT = "8080";
 
 	private HashMap<String, String> urlParams = new HashMap<String, String>();

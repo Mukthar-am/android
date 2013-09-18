@@ -32,7 +32,8 @@ public class BannerTestSuite extends TestSuite {
 				Log.d(LOG_TAG, "Creative - " + creativeSize);
 				String testCaseName = testPrefix + "_" + "Async" + "_" + "Slot" + slotSize.toLowerCase() + "_" + "Creative" + creativeSize.toLowerCase();
 				Log.d(LOG_TAG, "Slot size = " + slotSize + "; Creative size = " + creativeSize + " => " + testCaseName);
-				suite.addTest(TestSuite.createTest(BannerTests370.class, testCaseName));
+				
+				suite.addTest(TestSuite.createTest(BannerTests370.class, testCaseName));	// adding tests to the suite
 			}
 		}
 
