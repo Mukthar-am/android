@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Looper;
 import android.util.Log;
@@ -163,6 +165,18 @@ public class Utils {
 		return deviceDetails;
 	
 	}	// getDeviceDetails()
+	
+	
+	// #############################################################################################################################
+	  /*
+	   * Determine if the device is a tablet (i.e. it has a large screen).
+	   * @param context The calling context.
+	   */
+	  public boolean isTablet(Context context) {
+	    return (context.getResources().getConfiguration().screenLayout
+	            & Configuration.SCREENLAYOUT_SIZE_MASK)
+	            >= Configuration.SCREENLAYOUT_SIZE_LARGE;
+	  }
 	
 }
 // #################################	End - class #################################

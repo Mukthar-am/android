@@ -6,8 +6,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
 
@@ -29,7 +31,7 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 	public String slotSize = "";
 	private String adtype = "interstitial";
 	public String LOG_TAG = "PSOTEST";		// logger tag
-	private String HOSTIP = "10.14.119.58";
+	private String HOSTIP = "10.14.119.74";
 	private String PORT = "8080";
 
 	private HashMap<String, String> urlParams = new HashMap<String, String>();
@@ -58,7 +60,7 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 
 
 	// ################################################################################
-	// Test cases for banner ads
+	// Test cases for INTERSTITIAL ads
 	/* 
 	 * Steps for serving a interstitial ads on a layout
 	 * 1. build ad-server url
@@ -97,11 +99,11 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 		// gen click event
 		solo.clickOnScreen(100, 100);
 		utils.waitThread(3000);
-	} // end testBannerAds
+	} // end testInterstitialAds
 
 
 	// ################################################################################
-	// Test cases for banner ads
+	// Test cases for INTERSTITIAL ads
 	@Test
 	public void testInterstitialAds_Async_Slot320x480_Creative300x250() {
 		String slotSize = "320x480";
@@ -130,11 +132,11 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 		// gen click event
 		solo.clickOnScreen(100, 100);
 		utils.waitThread(3000);
-	} // end testBannerAds
+	} // end testInterstitialAds
 
 	
 	// ################################################################################
-	// Test cases for banner ads
+	// Test cases for INTERSTITIAL ads
 	@Test
 	public void testInterstitialAds_Async_Slot320x480_Creative600x500() {
 		String slotSize = "320x480";
@@ -163,10 +165,10 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 		// gen click event
 		solo.clickOnScreen(100, 100);
 		utils.waitThread(3000);
-	} // end testBannerAds
+	} // end testInterstitialAds
 
 	// ################################################################################
-	// Test cases for banner ads
+	// Test cases for INTERSTITIAL ads
 	@Test
 	public void testInterstitialAds_Async_Slot320x480_Creative640x960() {
 		String slotSize = "320x480";
@@ -195,12 +197,12 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 		// gen click event
 		solo.clickOnScreen(100, 100);
 		utils.waitThread(3000);
-	} // end testBannerAds
+	} // end testInterstitialAds
 
 
 	// ################################################################################
 	// #########	SYNC TESTS ##########
-	// Test cases for banner ads
+	// Test cases for INTERSTITIAL ads
 	@Test
 	public void testInterstitialAds_Sync_Slot320x480_Creative320x480() {
 		String slotSize = "320x480";
@@ -229,11 +231,11 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 		// gen click event
 		solo.clickOnScreen(100, 100);
 		utils.waitThread(3000);
-	} // end testBannerAds
+	} // end testInterstitialAds
 
 
 	// ################################################################################
-	// Test cases for banner ads
+	// Test cases for INTERSTITIAL ads
 	@Test
 	public void testInterstitialAds_Sync_Slot320x480_Creative300x250() {
 		String slotSize = "320x480";
@@ -262,10 +264,10 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 		// gen click event
 		solo.clickOnScreen(100, 100);
 		utils.waitThread(3000);
-	} // end testBannerAds
+	} // end testInterstitialAds
 
 	// ################################################################################
-	// Test cases for banner ads
+	// Test cases for INTERSTITIAL ads
 	@Test
 	public void testInterstitialAds_Sync_Slot320x480_Creative600x500() {
 		String slotSize = "320x480";
@@ -294,10 +296,10 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 		// gen click event
 		solo.clickOnScreen(100, 100);
 		utils.waitThread(3000);
-	} // end testBannerAds
+	} // end testInterstitialAds
 
 	// ################################################################################
-	// Test cases for banner ads
+	// Test cases for INTERSTITIAL ads
 	@Test
 	public void testInterstitialAds_Sync_Slot320x480_Creative640x960() {
 		String slotSize = "320x480";
@@ -327,7 +329,7 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 		solo.clickOnScreen(100, 100);
 		utils.waitThread(3000);
 
-	} // end testBannerAds
+	} // end testInterstitialAds
 
 	
 	
@@ -362,11 +364,11 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 		// gen click event
 		solo.clickOnScreen(100, 100);
 		utils.waitThread(3000);
-	} // end testBannerAds
+	} // end testInterstitialAds
 
 
 	// ################################################################################
-	// Test cases for banner ads
+	// Test cases for INTERSTITIAL ads
 	@Test
 	public void testInterstitialAds_Async_Slot480x320_Creative300x250() {
 		String slotSize = "320x480";
@@ -395,10 +397,10 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 		// gen click event
 		solo.clickOnScreen(100, 100);
 		utils.waitThread(3000);
-	} // end testBannerAds
+	} // end testInterstitialAds
 
 	// ################################################################################
-	// Test cases for banner ads
+	// Test cases for INTERSTITIAL ads
 	@Test
 	public void testInterstitialAds_Async_Slot480x320_Creative600x500() {
 		String slotSize = "320x480";
@@ -427,10 +429,10 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 		// gen click event
 		solo.clickOnScreen(100, 100);
 		utils.waitThread(3000);
-	} // end testBannerAds
+	} // end testInterstitialAds
 
 	// ################################################################################
-	// Test cases for banner ads
+	// Test cases for INTERSTITIAL ads
 	@Test
 	public void testInterstitialAds_Async_Slot480x320_Creative960x640() {
 		String slotSize = "320x480";
@@ -459,12 +461,12 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 		// gen click event
 		solo.clickOnScreen(100, 100);
 		utils.waitThread(3000);
-	} // end testBannerAds
+	} // end testInterstitialAds
 
 
 	// ################################################################################
 	// #########	SYNC TESTS ##########
-	// Test cases for banner ads
+	// Test cases for INTERSTITIAL ads
 	@Test
 	public void testInterstitialAds_Sync_Slot480x320_Creative480x320() {
 		String slotSize = "320x480";
@@ -493,11 +495,11 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 		// gen click event
 		solo.clickOnScreen(100, 100);
 		utils.waitThread(3000);
-	} // end testBannerAds
+	} // end testInterstitialAds
 
 
 	// ################################################################################
-	// Test cases for banner ads
+	// Test cases for INTERSTITIAL ads
 	@Test
 	public void testInterstitialAds_Sync_Slot480x320_Creative300x250() {
 		String slotSize = "320x480";
@@ -526,10 +528,10 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 		// gen click event
 		solo.clickOnScreen(100, 100);
 		utils.waitThread(3000);
-	} // end testBannerAds
+	} // end testInterstitialAds
 
 	// ################################################################################
-	// Test cases for banner ads
+	// Test cases for INTERSTITIAL ads
 	@Test
 	public void testInterstitialAds_Sync_Slot480x320_Creative600x500() {
 		String slotSize = "320x480";
@@ -558,10 +560,10 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 		// gen click event
 		solo.clickOnScreen(100, 100);
 		utils.waitThread(3000);
-	} // end testBannerAds
+	} // end testInterstitialAds
 
 	// ################################################################################
-	// Test cases for banner ads
+	// Test cases for INTERSTITIAL ads
 	@Test
 	public void testInterstitialAds_Sync_Slot480x320_Creative960x640() {
 		String slotSize = "320x480";
@@ -590,9 +592,138 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 		// gen click event
 		solo.clickOnScreen(100, 100);
 		utils.waitThread(3000);
-	} // end testBannerAds
+	} // end testInterstitialAds
+	
+	
+	
+	// ################################################################################
+	/* 					TABLET RELATED TESTS EXECUTION FROM BELOW					*/
+	// ################################################################################
+	// Test cases for INTERSTITIAL ads
+	@Test
+	public void testInterstitialAds_Async_Slot800x1280_Creative800x1280() {
+		String slotSize = "800X1280";
+		String creative = "800X1280";				// These variables are to be parameterized
+		String releaseType = "imai_async";		// These variables are to be parameterized
+		String testCaseId = getName();
 
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
 
+		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// gen click event
+		solo.clickOnScreen(100, 100);
+		utils.waitThread(3000);
+	} // end testInterstitialAds
+	
+	
+	@Test
+	public void testInterstitialAds_Async_Slot800x1280_Creative1600x2560() {
+		String slotSize = "800X1280";
+		String creative = "1600x2560";				// These variables are to be parameterized
+		String releaseType = "imai_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// gen click event
+		solo.clickOnScreen(100, 100);
+		utils.waitThread(3000);
+	} // end testInterstitialAds
+
+	// Test cases for INTERSTITIAL ads
+	@Test
+	public void testInterstitialAds_Async_Slot1280x800_Creative1280x800() {
+		String slotSize = "1280x800";
+		String creative = "1280x800";				// These variables are to be parameterized
+		String releaseType = "imai_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// gen click event
+		solo.clickOnScreen(100, 100);
+		utils.waitThread(3000);
+	} // end testInterstitialAds
+	
+	
+	@Test
+	public void testInterstitialAds_Async_Slot1280x800_Creative2560x1600() {
+		String slotSize = "1280x800";
+		String creative = "2560x1600";				// These variables are to be parameterized
+		String releaseType = "imai_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// gen click event
+		solo.clickOnScreen(100, 100);
+		utils.waitThread(3000);
+	} // end testInterstitialAds
+
+	
 //	// ##############################################################################################################################
 //	@After
 //	protected void tearDown() throws Exception {
@@ -605,6 +736,7 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 //			super.tearDown();
 //		}
 //	}
+	
 	// #############################################	Generic utility functions for interstitials	###########################################################################
 	public void inflateInterstitialLayout (final String orientationType) {
 		testActivity.runOnUiThread(new Runnable() {
@@ -620,6 +752,10 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 			}
 		});
 		utils.waitThread(2000);
+
+		String deviceIsTab = utils.isTablet(testActivity) ? "Android - Tablet" : "Android - Smartphone";
+		Log.d(LOG_TAG, "\nDevice Type: " + deviceIsTab + " \n\n");
+		
 	}
 	
 	// ##############################################################################################################################
