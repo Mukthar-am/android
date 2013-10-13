@@ -27,7 +27,7 @@ public class InterstitialTests362 extends ActivityInstrumentationTestCase2<InMob
 	public String slotSize = "";
 	private String adtype = "interstitial";
 	public String LOG_TAG = "PSOTEST";		// logger tag
-	private String HOSTIP = "10.14.126.80";
+	private String HOSTIP = "192.168.50.83";
 	private String PORT = "8080";
 
 	private HashMap<String, String> urlParams = new HashMap<String, String>();

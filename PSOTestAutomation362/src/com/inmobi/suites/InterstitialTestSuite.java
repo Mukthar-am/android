@@ -1,4 +1,4 @@
-package com.inmobi.suites;
+/*package com.inmobi.suites;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -116,3 +116,4 @@ public class InterstitialTestSuite extends TestSuite {
 	}	// end Suite()
 
 }	// end InterstitialTestSuite()
+*/

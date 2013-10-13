@@ -3,7 +3,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.inmobi.app</groupId>
-	<artifactId>PSOApp360</artifactId>
+	<artifactId>PSOApp360New</artifactId>
 	<version>1.0</version>
 	<packaging>apk</packaging>
 	<name>PSO Android Test App 360</name>

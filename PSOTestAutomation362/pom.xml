@@ -40,14 +40,14 @@
 
 		<dependency>
 			<groupId>com.inmobi.app</groupId>
-			<artifactId>PSOApp362</artifactId>
+			<artifactId>PSOApp362New</artifactId>
 			<version>1.0</version>
 			<type>apk</type>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.inmobi.app</groupId>
-			<artifactId>PSOApp362</artifactId>
+			<artifactId>PSOApp362New</artifactId>
 			<version>1.0</version>
 			<type>jar</type>
 			<scope>provided</scope>
