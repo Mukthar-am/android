@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.inmobi.android.automation</groupId>
-	<artifactId>PSOAndroidTests370</artifactId>
+	<artifactId>PSOAndroidTestAutomation</artifactId>
 	<version>1.0</version>
 	<packaging>apk</packaging>
 	<name>AndroidTestAutomation</name>
@@ -47,6 +47,21 @@
 		<dependency>
 			<groupId>com.inmobi.app</groupId>
 			<artifactId>PSOApp370</artifactId>
+			<version>1.0</version>
+			<type>jar</type>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.inmobi.app</groupId>
+			<artifactId>PSOApp362</artifactId>
+			<version>1.0</version>
+			<type>apk</type>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.inmobi.app</groupId>
+			<artifactId>PSOApp362</artifactId>
 			<version>1.0</version>
 			<type>jar</type>
 			<scope>provided</scope>

@@ -1,4 +1,4 @@
-package com.inmobi.suites;
+/*package com.inmobi.suites;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -18,15 +18,16 @@ public class InterstitialTestSuite extends TestSuite {
 
 		TestSuite suite = new TestSuite();
 		String[] devicesToExec = {"smartphone" }; //, "tablet"};
-		boolean portraitMode = true;
-		boolean landscapeMode = true;
+		boolean flexiMode = true;
+		boolean portraitMode = false;
+		boolean landscapeMode = false;
 
-		/* Variables - Portrait */
+		 Variables - Portrait 
 		String[] boltTypeListPortrait = { "Async" };//, "Sync" };
 		String[] slotListPortrait = { "320x480" };
 		String[] creativeListPortrait = { "300x250" };//, "320x480"	, "600x500", "640x960" };
 
-		/* Variables - Landscape */
+		 Variables - Landscape 
 		String[] boltTypeListLandscape = { "Async", "Sync" };
 		String[] slotListLandscape = { "480x320" };
 		String[] creativeListLandscape = { "300x250" }; //, "600x500", "480x320", "960x640" };
@@ -71,6 +72,12 @@ public class InterstitialTestSuite extends TestSuite {
 					}	// for (bolttype - landscape-mode)
 					
 				}
+				
+				if ( flexiMode ) {
+					Log.d( LOG_TAG, "+++ Interstitial flex test case...");
+					suite.addTest(TestSuite.createTest(InterstitialTests370.class, "testInterstitialAds_Async_Slot320x480_Creative320x480_FlexiTest"));	// adding individual tests using loop
+				}
+
 								
 			} else if ( device.equalsIgnoreCase("tablet") ) {
 				// iterating over slot-creative sizes:	PORTRAIT MODE
@@ -109,3 +116,4 @@ public class InterstitialTestSuite extends TestSuite {
 	}	// end Suite()
 
 }	// end InterstitialTestSuite()
+*/

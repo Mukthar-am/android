@@ -2,14 +2,9 @@ package com.inmobi.psoapp370.test;
 
 import java.util.HashMap;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
 
@@ -31,7 +26,8 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 	public String slotSize = "";
 	private String adtype = "interstitial";
 	public String LOG_TAG = "PSOTEST";		// logger tag
-	private String HOSTIP = "10.14.119.74";
+	//private String HOSTIP = "10.14.100.249";
+	private String HOSTIP = "14.194.59.253";
 	private String PORT = "8080";
 
 	private HashMap<String, String> urlParams = new HashMap<String, String>();
@@ -61,7 +57,7 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 
 	// ################################################################################
 	// Test cases for INTERSTITIAL ads
-	/* 
+	/*	 
 	 * Steps for serving a interstitial ads on a layout
 	 * 1. build ad-server url
 	 * 2. inflate or load interstitial ad view app-id
@@ -70,7 +66,95 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 	 * 5. showAd() over runOnUiThread method
 	 * 6. take a snapshot and 
 	 * 7. solo.click()
-	 */
+	 * */
+	 
+	@Test
+	public void testInterstitialAds_Async_Slot320x480_Creative640x960_FlexiTest1() {
+		String slotSize = "320x480";
+		String creative = "640x960";				// These variables are to be parameterized
+		String releaseType = "imai_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		this.inflateInterstitialLayout("portrait");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// Change orientation from portrait to landscape to check the scalability of the creative and generate click event
+		testActivity.setRequestedOrientation(0);	// 0 - landscape
+		solo.takeScreenshot(snapshotFile + "_ScaledLandscape");
+		utils.waitThread(3000);
+		
+		// Comment by Mukthar:
+		// Hitting close button and reloading the ad is to be automated here.
+		//
+		//	- place holder -
+		//
+		
+		// gen click event
+		solo.clickOnScreen(160, 240);
+		utils.waitThread(3000);
+		
+	} // end testInterstitialAds
+	
+	
+	@Test
+	public void testInterstitialAds_Async_Slot320x480_Creative640x960_FlexiTest2() {
+		String slotSize = "480x320";
+		String creative = "960x640";				// These variables are to be parameterized
+		String releaseType = "imai_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// Change orientation from portrait to landscape to check the scalability of the creative and generate click event
+		testActivity.setRequestedOrientation(1);
+		solo.takeScreenshot(snapshotFile + "_ScaledLandscape");
+		utils.waitThread(3000);
+		
+		
+		// Comment by Mukthar:
+		// Hitting close button and reloading the ad is to be automated here.
+		//
+		//	- place holder -
+		//
+		
+		// gen click event
+		solo.clickOnScreen(160, 240);
+		utils.waitThread(3000);
+		
+	} // end testInterstitialAds
+	
+	// ################################################################################	
 	@Test
 	public void testInterstitialAds_Async_Slot320x480_Creative320x480() {
 		String slotSize = "320x480";
@@ -92,12 +176,12 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
 		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
 
-		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);
 		String snapshotFile = getName() + testCaseId.toString();
 		solo.takeScreenshot(snapshotFile);
 
 		// gen click event
-		solo.clickOnScreen(100, 100);
+		solo.clickOnScreen(160, 240);
 		utils.waitThread(3000);
 	} // end testInterstitialAds
 
@@ -597,7 +681,7 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 	
 	
 	// ################################################################################
-	/* 					TABLET RELATED TESTS EXECUTION FROM BELOW					*/
+	//	 					TABLET RELATED TESTS EXECUTION FROM BELOW					
 	// ################################################################################
 	// Test cases for INTERSTITIAL ads
 	@Test
@@ -746,8 +830,13 @@ public class InterstitialTests370 extends ActivityInstrumentationTestCase2<InMob
 				
 				if (orientationType.equalsIgnoreCase("landscape")) {
 					testActivity.setRequestedOrientation(0);
-				} else {
+					
+				} else if (orientationType.equalsIgnoreCase("portrait")) {
 					testActivity.setRequestedOrientation(1);
+					
+				} else {
+					Log.d(LOG_TAG, "+ INFO: No orientation selected, orientation will be flexi now...");
+					
 				}
 			}
 		});
