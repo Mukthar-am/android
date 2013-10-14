@@ -1,0 +1,142 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.inmobi.app</groupId>
+	<artifactId>PSOApp351New</artifactId>
+	<version>1.0</version>
+	<packaging>apk</packaging>
+	<name>PSO Android Test App 351</name>
+	<description>Test app for SDK-351</description>
+
+	<repositories>
+		<repository>
+			<id>releases</id>
+			<name>Releases</name>
+			<url>http://maven.scm.corp.inmobi.com/content/repositories/inmobi-old-release/</url>
+		</repository>
+	</repositories>
+
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android</artifactId>
+			<version>1.5_r4</version>
+			<scope>provided</scope>
+			<type>jar</type>
+		</dependency>
+
+		<!-- emma-jar helps maven android plugging to pull android-platform-api 
+			17 or so.. -->
+		<dependency>
+			<groupId>emma</groupId>
+			<artifactId>emma</artifactId>
+			<type>jar</type>
+			<scope>compile</scope>
+			<version>2.1.5320</version>
+		</dependency>
+
+		<!-- prevent commons-logging from being included by the Google HTTP client 
+			dependencies -->
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+		    <groupId>com.inmobi.androidsdk</groupId>
+			<artifactId>InMobi_Android_SDK</artifactId>
+			<version>3.5.1</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>android</artifactId>
+					<groupId>com.google.android</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>annotations</artifactId>
+					<groupId>com.google.android</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>support-v4</artifactId>
+					<groupId>com.google.android</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>IMRenderingEngine</artifactId>
+					<groupId>com.inmobi.re</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+<!-- 		<dependency>
+			<groupId>com.inmobi.androidsdk</groupId>
+			<artifactId>InMobiCommons</artifactId>
+			<version>3.5.1</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>android</artifactId>
+					<groupId>com.google.android</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>annotations</artifactId>
+					<groupId>com.google.android</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency> -->
+
+		<dependency>
+			<groupId>com.jayway.android.robotium</groupId>
+			<artifactId>robotium-solo</artifactId>
+			<version>4.0</version>
+		</dependency>
+
+	</dependencies>
+
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<sourceDirectory>${project.basedir}/src</sourceDirectory>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.1</version>
+					<configuration>
+						<source />
+						<target />
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+					<artifactId>android-maven-plugin</artifactId>
+					<version>3.3.2</version>
+					<extensions>true</extensions>
+				</plugin>
+
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+				<artifactId>android-maven-plugin</artifactId>
+				<configuration>
+					<sdk>
+						<path>${env.ANDROID_HOME}</path>
+						<!-- platform or api level (api level 4 = platform 1.6) -->
+						<platform>17</platform>
+					</sdk>
+					<deleteConflictingFiles>true</deleteConflictingFiles>
+					<extensions>true</extensions>
+				</configuration>
+			</plugin>
+		</plugins>
+
+	</build>
+
+
+</project>

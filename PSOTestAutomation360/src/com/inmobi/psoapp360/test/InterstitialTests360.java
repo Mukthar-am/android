@@ -9,16 +9,16 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
 
 import com.inmobi.androidsdk.IMAdInterstitial;
-import com.inmobi.app.sdk360.InMobiAdActivity360;
+import com.inmobi.app.sdk360.InMobiAdActivity354;
 import com.inmobi.commons.Utils;
 import com.inmobi.commons.internal.IMLog.INTERNAL_LOG_LEVEL;
 import com.jayway.android.robotium.solo.Solo;
 
 
-public class InterstitialTests360 extends ActivityInstrumentationTestCase2<InMobiAdActivity360> {
+public class InterstitialTests360 extends ActivityInstrumentationTestCase2<InMobiAdActivity354> {
 
 	private static final String APPID = "psoapp123";
-	private InMobiAdActivity360 testActivity; 	// The test activity.
+	private InMobiAdActivity354 testActivity; 	// The test activity.
 	
 	public IMAdInterstitial imAdInterstitialViewObj;				// object to hold the test-activity
 	public Solo solo;						// object for robotium
@@ -36,7 +36,7 @@ public class InterstitialTests360 extends ActivityInstrumentationTestCase2<InMob
 
 	// ################################################################################
 	public InterstitialTests360() {
-		super(InMobiAdActivity360.class);
+		super(InMobiAdActivity354.class);
 	}
 
 	// ################################################################################
