@@ -29,7 +29,7 @@ public class InterstitialTests354 extends ActivityInstrumentationTestCase2<InMob
 	public String slotSize = "";
 	private String adtype = "interstitial";
 	public String LOG_TAG = "PSOTEST";		// logger tag
-	private String HOSTIP = "10.14.126.80";
+	private String HOSTIP = "10.14.125.114";
 	private String PORT = "8080";
 
 	private HashMap<String, String> urlParams = new HashMap<String, String>();
@@ -76,7 +76,7 @@ public class InterstitialTests354 extends ActivityInstrumentationTestCase2<InMob
 	public void testInterstitialAds_Async_Slot320x480_Creative640x960_FlexiTest1() {
 		String slotSize = "320x480";
 		String creative = "640x960";				// These variables are to be parameterized
-		String releaseType = "imai_async";		// These variables are to be parameterized
+		String releaseType = "xhtml_async";		// These variables are to be parameterized
 		String testCaseId = getName();
 
 		// building the request url parameters:
@@ -111,7 +111,7 @@ public class InterstitialTests354 extends ActivityInstrumentationTestCase2<InMob
 		
 		// gen click event
 		solo.clickOnScreen(160, 240);
-		utils.waitThread(3000);
+		utils.waitThread(7000);
 		
 	} // end testInterstitialAds
 	
