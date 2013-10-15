@@ -4,11 +4,13 @@ import java.util.HashMap;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
 
 import com.inmobi.androidsdk.IMAdInterstitial;
+import com.inmobi.commons.IMCommonUtil;
 import com.inmobi.app.sdk362.InMobiAdActivity362;
 import com.inmobi.commons.Utils;
 import com.inmobi.commons.internal.IMLog.INTERNAL_LOG_LEVEL;
@@ -27,7 +29,7 @@ public class InterstitialTests362 extends ActivityInstrumentationTestCase2<InMob
 	public String slotSize = "";
 	private String adtype = "interstitial";
 	public String LOG_TAG = "PSOTEST";		// logger tag
-	private String HOSTIP = "192.168.50.83";
+	private String HOSTIP = "10.14.125.114";
 	private String PORT = "8080";
 
 	private HashMap<String, String> urlParams = new HashMap<String, String>();
@@ -71,53 +73,54 @@ public class InterstitialTests362 extends ActivityInstrumentationTestCase2<InMob
 	 */
 	
 	
-	public void testInterstitialAds_Async_Slot320x480_Creative640x960_FlexiTest1() {
-		String slotSize = "320x480";
-		String creative = "640x960";				// These variables are to be parameterized
-		String releaseType = "imai_async";		// These variables are to be parameterized
-		String testCaseId = getName();
-
-		// building the request url parameters:
-		urlParams.put("testcaseid", testCaseId);
-		urlParams.put("release", releaseType);
-		urlParams.put("adtype", adtype);
-		urlParams.put("slotid", slotSize);
-		urlParams.put("creative", creative);
-		
-		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
-		Log.d(LOG_TAG, "URL: " + adServerURL);
-
-		this.inflateInterstitialLayout("portrait");			// inflating layout based on slot-size
-		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
-		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
-
-		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);
-		String snapshotFile = getName() + testCaseId.toString();
-		solo.takeScreenshot(snapshotFile);
-
-		// Change orientation from portrait to landscape to check the scalability of the creative and generate click event
-		testActivity.setRequestedOrientation(0);	// 0 - landscape
-		solo.takeScreenshot(snapshotFile + "_ScaledLandscape");
-		utils.waitThread(3000);
-		
-		// Comment by Mukthar:
-		// Hitting close button and reloading the ad is to be automated here.
-		//
-		//	- place holder -
-		//
-		
-		// gen click event
-		solo.clickOnScreen(160, 240);
-		utils.waitThread(3000);
-		
-	} // end testInterstitialAds
-	
-	
+//	public void testInterstitialAds_Async_Slot320x480_Creative640x960_FlexiTest1() {
+//		String slotSize = "320x480";
+//		String creative = "640x960";				// These variables are to be parameterized
+//		String releaseType = "xhtml_async";		// These variables are to be parameterized
+//		String testCaseId = getName();
+//
+//		// building the request url parameters:
+//		urlParams.put("testcaseid", testCaseId);
+//		urlParams.put("release", releaseType);
+//		urlParams.put("adtype", adtype);
+//		urlParams.put("slotid", slotSize);
+//		urlParams.put("creative", creative);
+//		
+//		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+//		Log.d(LOG_TAG, "URL: " + adServerURL);
+//
+//		this.inflateInterstitialLayout("portrait");			// inflating layout based on slot-size
+//		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+//		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+//
+//		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);
+//		utils.waitThread(7000);
+//		String snapshotFile = getName() + testCaseId.toString();
+//		solo.takeScreenshot(snapshotFile);
+//
+//		// Change orientation from portrait to landscape to check the scalability of the creative and generate click event
+//		testActivity.setRequestedOrientation(0);	// 0 - landscape
+//		solo.takeScreenshot(snapshotFile + "_ScaledLandscape");
+//		utils.waitThread(7000);
+//		
+//		// Comment by Mukthar:
+//		// Hitting close button and reloading the ad is to be automated here.
+//		//
+//		//	- place holder -
+//		//
+//		
+//		// gen click event
+//		solo.clickOnScreen(160, 240);
+//		utils.waitThread(7000);
+//		
+//	} // end testInterstitialAds
+//	
+//	
 //	@Test
 //	public void testInterstitialAds_Async_Slot320x480_Creative640x960_FlexiTest2() {
 //		String slotSize = "480x320";
 //		String creative = "960x640";				// These variables are to be parameterized
-//		String releaseType = "imai_async";		// These variables are to be parameterized
+//		String releaseType = "xhtml_async";		// These variables are to be parameterized
 //		String testCaseId = getName();
 //
 //		// building the request url parameters:
@@ -141,7 +144,7 @@ public class InterstitialTests362 extends ActivityInstrumentationTestCase2<InMob
 //		// Change orientation from portrait to landscape to check the scalability of the creative and generate click event
 //		testActivity.setRequestedOrientation(1);
 //		solo.takeScreenshot(snapshotFile + "_ScaledLandscape");
-//		utils.waitThread(3000);
+//		utils.waitThread(7000);
 //		
 //		
 //		// Comment by Mukthar:
@@ -152,662 +155,662 @@ public class InterstitialTests362 extends ActivityInstrumentationTestCase2<InMob
 //		
 //		// gen click event
 //		solo.clickOnScreen(160, 240);
-//		utils.waitThread(3000);
+//		utils.waitThread(7000);
 //		
 //	} // end testInterstitialAds
 //	
-//	// ################################################################################	
-//	@Test
-//	public void testInterstitialAds_Async_Slot320x480_Creative320x480() {
-//		String slotSize = "320x480";
-//		String creative = "320x480";				// These variables are to be parameterized
-//		String releaseType = "imai_async";		// These variables are to be parameterized
-//		String testCaseId = getName();
-//
-//		// building the request url parameters:
-//		urlParams.put("testcaseid", testCaseId);
-//		urlParams.put("release", releaseType);
-//		urlParams.put("adtype", adtype);
-//		urlParams.put("slotid", slotSize);
-//		urlParams.put("creative", creative);
-//		
-//		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
-//		Log.d(LOG_TAG, "URL: " + adServerURL);
-//
-//		this.inflateInterstitialLayout("portrait");			// inflating layout based on slot-size
-//		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
-//		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
-//
-//		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);
-//		String snapshotFile = getName() + testCaseId.toString();
-//		solo.takeScreenshot(snapshotFile);
-//
-//		// gen click event
-//		solo.clickOnScreen(160, 240);
-//		utils.waitThread(3000);
-//	} // end testInterstitialAds
-//
-//
-//	// ################################################################################
-//	// Test cases for INTERSTITIAL ads
-//	@Test
-//	public void testInterstitialAds_Async_Slot320x480_Creative300x250() {
-//		String slotSize = "320x480";
-//		String creative = "300x250";				// These variables are to be parameterized
-//		String releaseType = "imai_async";		// These variables are to be parameterized
-//		String testCaseId = getName();
-//
-//		// building the request url parameters:
-//		urlParams.put("testcaseid", testCaseId);
-//		urlParams.put("release", releaseType);
-//		urlParams.put("adtype", adtype);
-//		urlParams.put("slotid", slotSize);
-//		urlParams.put("creative", creative);
-//		
-//		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
-//		Log.d(LOG_TAG, "URL: " + adServerURL);
-//
-//		this.inflateInterstitialLayout("portrait");			// inflating layout based on slot-size
-//		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
-//		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
-//
-//		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
-//		String snapshotFile = getName() + testCaseId.toString();
-//		solo.takeScreenshot(snapshotFile);
-//
-//		// gen click event
-//		solo.clickOnScreen(100, 100);
-//		utils.waitThread(3000);
-//	} // end testInterstitialAds
-//
-//	
-//	// ################################################################################
-//	// Test cases for INTERSTITIAL ads
-//	@Test
-//	public void testInterstitialAds_Async_Slot320x480_Creative600x500() {
-//		String slotSize = "320x480";
-//		String creative = "600x500";				// These variables are to be parameterized
-//		String releaseType = "imai_async";		// These variables are to be parameterized
-//		String testCaseId = getName();
-//
-//		// building the request url parameters:
-//		urlParams.put("testcaseid", testCaseId);
-//		urlParams.put("release", releaseType);
-//		urlParams.put("adtype", adtype);
-//		urlParams.put("slotid", slotSize);
-//		urlParams.put("creative", creative);
-//		
-//		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
-//		Log.d(LOG_TAG, "URL: " + adServerURL);
-//
-//		this.inflateInterstitialLayout("portrait");			// inflating layout based on slot-size
-//		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
-//		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
-//
-//		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
-//		String snapshotFile = getName() + testCaseId.toString();
-//		solo.takeScreenshot(snapshotFile);
-//
-//		// gen click event
-//		solo.clickOnScreen(100, 100);
-//		utils.waitThread(3000);
-//	} // end testInterstitialAds
-//
-//	// ################################################################################
-//	// Test cases for INTERSTITIAL ads
-//	@Test
-//	public void testInterstitialAds_Async_Slot320x480_Creative640x960() {
-//		String slotSize = "320x480";
-//		String creative = "640x960";				// These variables are to be parameterized
-//		String releaseType = "imai_async";		// These variables are to be parameterized
-//		String testCaseId = getName();
-//
-//		// building the request url parameters:
-//		urlParams.put("testcaseid", testCaseId);
-//		urlParams.put("release", releaseType);
-//		urlParams.put("adtype", adtype);
-//		urlParams.put("slotid", slotSize);
-//		urlParams.put("creative", creative);
-//		
-//		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
-//		Log.d(LOG_TAG, "URL: " + adServerURL);
-//
-//		this.inflateInterstitialLayout("portrait");			// inflating layout based on slot-size
-//		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
-//		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
-//
-//		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
-//		String snapshotFile = getName() + testCaseId.toString();
-//		solo.takeScreenshot(snapshotFile);
-//
-//		// gen click event
-//		solo.clickOnScreen(100, 100);
-//		utils.waitThread(3000);
-//	} // end testInterstitialAds
-//
-//
-//	// ################################################################################
-//	// #########	SYNC TESTS ##########
-//	// Test cases for INTERSTITIAL ads
-//	@Test
-//	public void testInterstitialAds_Sync_Slot320x480_Creative320x480() {
-//		String slotSize = "320x480";
-//		String creative = "320x480";				// These variables are to be parameterized
-//		String releaseType = "imai_async";		// These variables are to be parameterized
-//		String testCaseId = getName();
-//
-//		// building the request url parameters:
-//		urlParams.put("testcaseid", testCaseId);
-//		urlParams.put("release", releaseType);
-//		urlParams.put("adtype", adtype);
-//		urlParams.put("slotid", slotSize);
-//		urlParams.put("creative", creative);
-//		
-//		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
-//		Log.d(LOG_TAG, "URL: " + adServerURL);
-//
-//		this.inflateInterstitialLayout("portrait");			// inflating layout based on slot-size
-//		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
-//		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
-//
-//		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
-//		String snapshotFile = getName() + testCaseId.toString();
-//		solo.takeScreenshot(snapshotFile);
-//
-//		// gen click event
-//		solo.clickOnScreen(100, 100);
-//		utils.waitThread(3000);
-//	} // end testInterstitialAds
-//
-//
-//	// ################################################################################
-//	// Test cases for INTERSTITIAL ads
-//	@Test
-//	public void testInterstitialAds_Sync_Slot320x480_Creative300x250() {
-//		String slotSize = "320x480";
-//		String creative = "300x250";				// These variables are to be parameterized
-//		String releaseType = "imai_async";		// These variables are to be parameterized
-//		String testCaseId = getName();
-//
-//		// building the request url parameters:
-//		urlParams.put("testcaseid", testCaseId);
-//		urlParams.put("release", releaseType);
-//		urlParams.put("adtype", adtype);
-//		urlParams.put("slotid", slotSize);
-//		urlParams.put("creative", creative);
-//		
-//		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
-//		Log.d(LOG_TAG, "URL: " + adServerURL);
-//
-//		this.inflateInterstitialLayout("portrait");			// inflating layout based on slot-size
-//		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
-//		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
-//
-//		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
-//		String snapshotFile = getName() + testCaseId.toString();
-//		solo.takeScreenshot(snapshotFile);
-//
-//		// gen click event
-//		solo.clickOnScreen(100, 100);
-//		utils.waitThread(3000);
-//	} // end testInterstitialAds
-//
-//	// ################################################################################
-//	// Test cases for INTERSTITIAL ads
-//	@Test
-//	public void testInterstitialAds_Sync_Slot320x480_Creative600x500() {
-//		String slotSize = "320x480";
-//		String creative = "600x500";				// These variables are to be parameterized
-//		String releaseType = "imai_async";		// These variables are to be parameterized
-//		String testCaseId = getName();
-//
-//		// building the request url parameters:
-//		urlParams.put("testcaseid", testCaseId);
-//		urlParams.put("release", releaseType);
-//		urlParams.put("adtype", adtype);
-//		urlParams.put("slotid", slotSize);
-//		urlParams.put("creative", creative);
-//		
-//		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
-//		Log.d(LOG_TAG, "URL: " + adServerURL);
-//
-//		this.inflateInterstitialLayout("portrait");			// inflating layout based on slot-size
-//		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
-//		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
-//
-//		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
-//		String snapshotFile = getName() + testCaseId.toString();
-//		solo.takeScreenshot(snapshotFile);
-//
-//		// gen click event
-//		solo.clickOnScreen(100, 100);
-//		utils.waitThread(3000);
-//	} // end testInterstitialAds
-//
-//	// ################################################################################
-//	// Test cases for INTERSTITIAL ads
-//	@Test
-//	public void testInterstitialAds_Sync_Slot320x480_Creative640x960() {
-//		String slotSize = "320x480";
-//		String creative = "640x960";				// These variables are to be parameterized
-//		String releaseType = "imai_async";		// These variables are to be parameterized
-//		String testCaseId = getName();
-//
-//		// building the request url parameters:
-//		urlParams.put("testcaseid", testCaseId);
-//		urlParams.put("release", releaseType);
-//		urlParams.put("adtype", adtype);
-//		urlParams.put("slotid", slotSize);
-//		urlParams.put("creative", creative);
-//		
-//		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
-//		Log.d(LOG_TAG, "URL: " + adServerURL);
-//
-//		this.inflateInterstitialLayout("portrait");			// inflating layout based on slot-size
-//		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
-//		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
-//
-//		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
-//		String snapshotFile = getName() + testCaseId.toString();
-//		solo.takeScreenshot(snapshotFile);
-//
-//		// gen click event
-//		solo.clickOnScreen(100, 100);
-//		utils.waitThread(3000);
-//
-//	} // end testInterstitialAds
-//
-//	
-//	
-//	
-//	// ############################################################################################################
-//	// ##################### LANDSCAPE MODE ########################
-//	@Test
-//	public void testInterstitialAds_Async_Slot480x320_Creative480x320() {
-//		String slotSize = "320x480";
-//		String creative = "320x480";				// These variables are to be parameterized
-//		String releaseType = "imai_async";		// These variables are to be parameterized
-//		String testCaseId = getName();
-//
-//		// building the request url parameters:
-//		urlParams.put("testcaseid", testCaseId);
-//		urlParams.put("release", releaseType);
-//		urlParams.put("adtype", adtype);
-//		urlParams.put("slotid", slotSize);
-//		urlParams.put("creative", creative);
-//		
-//		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
-//		Log.d(LOG_TAG, "URL: " + adServerURL);
-//
-//		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
-//		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
-//		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
-//
-//		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
-//		String snapshotFile = getName() + testCaseId.toString();
-//		solo.takeScreenshot(snapshotFile);
-//
-//		// gen click event
-//		solo.clickOnScreen(100, 100);
-//		utils.waitThread(3000);
-//	} // end testInterstitialAds
-//
-//
-//	// ################################################################################
-//	// Test cases for INTERSTITIAL ads
-//	@Test
-//	public void testInterstitialAds_Async_Slot480x320_Creative300x250() {
-//		String slotSize = "320x480";
-//		String creative = "300x250";				// These variables are to be parameterized
-//		String releaseType = "imai_async";		// These variables are to be parameterized
-//		String testCaseId = getName();
-//
-//		// building the request url parameters:
-//		urlParams.put("testcaseid", testCaseId);
-//		urlParams.put("release", releaseType);
-//		urlParams.put("adtype", adtype);
-//		urlParams.put("slotid", slotSize);
-//		urlParams.put("creative", creative);
-//		
-//		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
-//		Log.d(LOG_TAG, "URL: " + adServerURL);
-//
-//		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
-//		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
-//		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
-//
-//		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
-//		String snapshotFile = getName() + testCaseId.toString();
-//		solo.takeScreenshot(snapshotFile);
-//
-//		// gen click event
-//		solo.clickOnScreen(100, 100);
-//		utils.waitThread(3000);
-//	} // end testInterstitialAds
-//
-//	// ################################################################################
-//	// Test cases for INTERSTITIAL ads
-//	@Test
-//	public void testInterstitialAds_Async_Slot480x320_Creative600x500() {
-//		String slotSize = "320x480";
-//		String creative = "600x500";				// These variables are to be parameterized
-//		String releaseType = "imai_async";		// These variables are to be parameterized
-//		String testCaseId = getName();
-//
-//		// building the request url parameters:
-//		urlParams.put("testcaseid", testCaseId);
-//		urlParams.put("release", releaseType);
-//		urlParams.put("adtype", adtype);
-//		urlParams.put("slotid", slotSize);
-//		urlParams.put("creative", creative);
-//		
-//		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
-//		Log.d(LOG_TAG, "URL: " + adServerURL);
-//
-//		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
-//		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
-//		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
-//
-//		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
-//		String snapshotFile = getName() + testCaseId.toString();
-//		solo.takeScreenshot(snapshotFile);
-//
-//		// gen click event
-//		solo.clickOnScreen(100, 100);
-//		utils.waitThread(3000);
-//	} // end testInterstitialAds
-//
-//	// ################################################################################
-//	// Test cases for INTERSTITIAL ads
-//	@Test
-//	public void testInterstitialAds_Async_Slot480x320_Creative960x640() {
-//		String slotSize = "320x480";
-//		String creative = "640x960";				// These variables are to be parameterized
-//		String releaseType = "imai_async";		// These variables are to be parameterized
-//		String testCaseId = getName();
-//
-//		// building the request url parameters:
-//		urlParams.put("testcaseid", testCaseId);
-//		urlParams.put("release", releaseType);
-//		urlParams.put("adtype", adtype);
-//		urlParams.put("slotid", slotSize);
-//		urlParams.put("creative", creative);
-//		
-//		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
-//		Log.d(LOG_TAG, "URL: " + adServerURL);
-//
-//		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
-//		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
-//		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
-//
-//		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
-//		String snapshotFile = getName() + testCaseId.toString();
-//		solo.takeScreenshot(snapshotFile);
-//
-//		// gen click event
-//		solo.clickOnScreen(100, 100);
-//		utils.waitThread(3000);
-//	} // end testInterstitialAds
-//
-//
-//	// ################################################################################
-//	// #########	SYNC TESTS ##########
-//	// Test cases for INTERSTITIAL ads
-//	@Test
-//	public void testInterstitialAds_Sync_Slot480x320_Creative480x320() {
-//		String slotSize = "320x480";
-//		String creative = "320x480";				// These variables are to be parameterized
-//		String releaseType = "imai_async";		// These variables are to be parameterized
-//		String testCaseId = getName();
-//
-//		// building the request url parameters:
-//		urlParams.put("testcaseid", testCaseId);
-//		urlParams.put("release", releaseType);
-//		urlParams.put("adtype", adtype);
-//		urlParams.put("slotid", slotSize);
-//		urlParams.put("creative", creative);
-//		
-//		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
-//		Log.d(LOG_TAG, "URL: " + adServerURL);
-//
-//		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
-//		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
-//		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
-//
-//		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
-//		String snapshotFile = getName() + testCaseId.toString();
-//		solo.takeScreenshot(snapshotFile);
-//
-//		// gen click event
-//		solo.clickOnScreen(100, 100);
-//		utils.waitThread(3000);
-//	} // end testInterstitialAds
-//
-//
-//	// ################################################################################
-//	// Test cases for INTERSTITIAL ads
-//	@Test
-//	public void testInterstitialAds_Sync_Slot480x320_Creative300x250() {
-//		String slotSize = "320x480";
-//		String creative = "300x250";				// These variables are to be parameterized
-//		String releaseType = "imai_async";		// These variables are to be parameterized
-//		String testCaseId = getName();
-//
-//		// building the request url parameters:
-//		urlParams.put("testcaseid", testCaseId);
-//		urlParams.put("release", releaseType);
-//		urlParams.put("adtype", adtype);
-//		urlParams.put("slotid", slotSize);
-//		urlParams.put("creative", creative);
-//		
-//		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
-//		Log.d(LOG_TAG, "URL: " + adServerURL);
-//
-//		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
-//		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
-//		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
-//
-//		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
-//		String snapshotFile = getName() + testCaseId.toString();
-//		solo.takeScreenshot(snapshotFile);
-//
-//		// gen click event
-//		solo.clickOnScreen(100, 100);
-//		utils.waitThread(3000);
-//	} // end testInterstitialAds
-//
-//	// ################################################################################
-//	// Test cases for INTERSTITIAL ads
-//	@Test
-//	public void testInterstitialAds_Sync_Slot480x320_Creative600x500() {
-//		String slotSize = "320x480";
-//		String creative = "600x500";				// These variables are to be parameterized
-//		String releaseType = "imai_async";		// These variables are to be parameterized
-//		String testCaseId = getName();
-//
-//		// building the request url parameters:
-//		urlParams.put("testcaseid", testCaseId);
-//		urlParams.put("release", releaseType);
-//		urlParams.put("adtype", adtype);
-//		urlParams.put("slotid", slotSize);
-//		urlParams.put("creative", creative);
-//		
-//		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
-//		Log.d(LOG_TAG, "URL: " + adServerURL);
-//
-//		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
-//		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
-//		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
-//
-//		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
-//		String snapshotFile = getName() + testCaseId.toString();
-//		solo.takeScreenshot(snapshotFile);
-//
-//		// gen click event
-//		solo.clickOnScreen(100, 100);
-//		utils.waitThread(3000);
-//	} // end testInterstitialAds
-//
-//	// ################################################################################
-//	// Test cases for INTERSTITIAL ads
-//	@Test
-//	public void testInterstitialAds_Sync_Slot480x320_Creative960x640() {
-//		String slotSize = "320x480";
-//		String creative = "640x960";				// These variables are to be parameterized
-//		String releaseType = "imai_async";		// These variables are to be parameterized
-//		String testCaseId = getName();
-//
-//		// building the request url parameters:
-//		urlParams.put("testcaseid", testCaseId);
-//		urlParams.put("release", releaseType);
-//		urlParams.put("adtype", adtype);
-//		urlParams.put("slotid", slotSize);
-//		urlParams.put("creative", creative);
-//		
-//		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
-//		Log.d(LOG_TAG, "URL: " + adServerURL);
-//
-//		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
-//		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
-//		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
-//
-//		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
-//		String snapshotFile = getName() + testCaseId.toString();
-//		solo.takeScreenshot(snapshotFile);
-//
-//		// gen click event
-//		solo.clickOnScreen(100, 100);
-//		utils.waitThread(3000);
-//	} // end testInterstitialAds
-//	
-//	
-//	
-//	// ################################################################################
-//	/* 					TABLET RELATED TESTS EXECUTION FROM BELOW					*/
-//	// ################################################################################
-//	// Test cases for INTERSTITIAL ads
-//	@Test
-//	public void testInterstitialAds_Async_Slot800x1280_Creative800x1280() {
-//		String slotSize = "800X1280";
-//		String creative = "800X1280";				// These variables are to be parameterized
-//		String releaseType = "imai_async";		// These variables are to be parameterized
-//		String testCaseId = getName();
-//
-//		// building the request url parameters:
-//		urlParams.put("testcaseid", testCaseId);
-//		urlParams.put("release", releaseType);
-//		urlParams.put("adtype", adtype);
-//		urlParams.put("slotid", slotSize);
-//		urlParams.put("creative", creative);
-//		
-//		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
-//		Log.d(LOG_TAG, "URL: " + adServerURL);
-//
-//		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
-//		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
-//		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
-//
-//		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
-//		String snapshotFile = getName() + testCaseId.toString();
-//		solo.takeScreenshot(snapshotFile);
-//
-//		// gen click event
-//		solo.clickOnScreen(100, 100);
-//		utils.waitThread(3000);
-//	} // end testInterstitialAds
-//	
-//	
-//	@Test
-//	public void testInterstitialAds_Async_Slot800x1280_Creative1600x2560() {
-//		String slotSize = "800X1280";
-//		String creative = "1600x2560";				// These variables are to be parameterized
-//		String releaseType = "imai_async";		// These variables are to be parameterized
-//		String testCaseId = getName();
-//
-//		// building the request url parameters:
-//		urlParams.put("testcaseid", testCaseId);
-//		urlParams.put("release", releaseType);
-//		urlParams.put("adtype", adtype);
-//		urlParams.put("slotid", slotSize);
-//		urlParams.put("creative", creative);
-//		
-//		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
-//		Log.d(LOG_TAG, "URL: " + adServerURL);
-//
-//		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
-//		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
-//		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
-//
-//		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
-//		String snapshotFile = getName() + testCaseId.toString();
-//		solo.takeScreenshot(snapshotFile);
-//
-//		// gen click event
-//		solo.clickOnScreen(100, 100);
-//		utils.waitThread(3000);
-//	} // end testInterstitialAds
-//
-//	// Test cases for INTERSTITIAL ads
-//	@Test
-//	public void testInterstitialAds_Async_Slot1280x800_Creative1280x800() {
-//		String slotSize = "1280x800";
-//		String creative = "1280x800";				// These variables are to be parameterized
-//		String releaseType = "imai_async";		// These variables are to be parameterized
-//		String testCaseId = getName();
-//
-//		// building the request url parameters:
-//		urlParams.put("testcaseid", testCaseId);
-//		urlParams.put("release", releaseType);
-//		urlParams.put("adtype", adtype);
-//		urlParams.put("slotid", slotSize);
-//		urlParams.put("creative", creative);
-//		
-//		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
-//		Log.d(LOG_TAG, "URL: " + adServerURL);
-//
-//		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
-//		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
-//		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
-//
-//		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
-//		String snapshotFile = getName() + testCaseId.toString();
-//		solo.takeScreenshot(snapshotFile);
-//
-//		// gen click event
-//		solo.clickOnScreen(100, 100);
-//		utils.waitThread(3000);
-//	} // end testInterstitialAds
-//	
-//	
-//	@Test
-//	public void testInterstitialAds_Async_Slot1280x800_Creative2560x1600() {
-//		String slotSize = "1280x800";
-//		String creative = "2560x1600";				// These variables are to be parameterized
-//		String releaseType = "imai_async";		// These variables are to be parameterized
-//		String testCaseId = getName();
-//
-//		// building the request url parameters:
-//		urlParams.put("testcaseid", testCaseId);
-//		urlParams.put("release", releaseType);
-//		urlParams.put("adtype", adtype);
-//		urlParams.put("slotid", slotSize);
-//		urlParams.put("creative", creative);
-//		
-//		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
-//		Log.d(LOG_TAG, "URL: " + adServerURL);
-//
-//		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
-//		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
-//		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
-//
-//		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
-//		String snapshotFile = getName() + testCaseId.toString();
-//		solo.takeScreenshot(snapshotFile);
-//
-//		// gen click event
-//		solo.clickOnScreen(100, 100);
-//		utils.waitThread(3000);
-//	} // end testInterstitialAds
+	// ################################################################################	
+	@Test
+	public void testInterstitialAds_Async_Slot320x480_Creative320x480() {
+		String slotSize = "320x480";
+		String creative = "320x480";				// These variables are to be parameterized
+		String releaseType = "xhtml_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		this.inflateInterstitialLayout("portrait");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// gen click event
+		solo.clickOnScreen(160, 240);
+		utils.waitThread(7000);
+	} // end testInterstitialAds
+
+
+	// ################################################################################
+	// Test cases for INTERSTITIAL ads
+	@Test
+	public void testInterstitialAds_Async_Slot320x480_Creative300x250() {
+		String slotSize = "320x480";
+		String creative = "300x250";				// These variables are to be parameterized
+		String releaseType = "xhtml_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		this.inflateInterstitialLayout("portrait");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// gen click event
+		solo.clickOnScreen(150, 150);
+		utils.waitThread(7000);
+	} // end testInterstitialAds
+
+	
+	// ################################################################################
+	// Test cases for INTERSTITIAL ads
+	@Test
+	public void testInterstitialAds_Async_Slot320x480_Creative600x500() {
+		String slotSize = "320x480";
+		String creative = "600x500";				// These variables are to be parameterized
+		String releaseType = "xhtml_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		this.inflateInterstitialLayout("portrait");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// gen click event
+		solo.clickOnScreen(100, 100);
+		utils.waitThread(7000);
+	} // end testInterstitialAds
+
+	// ################################################################################
+	// Test cases for INTERSTITIAL ads
+	@Test
+	public void testInterstitialAds_Async_Slot320x480_Creative640x960() {
+		String slotSize = "320x480";
+		String creative = "640x960";				// These variables are to be parameterized
+		String releaseType = "xhtml_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		this.inflateInterstitialLayout("portrait");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// gen click event
+		solo.clickOnScreen(100, 100);
+		utils.waitThread(7000);
+	} // end testInterstitialAds
+
+
+	// ################################################################################
+	// #########	SYNC TESTS ##########
+	// Test cases for INTERSTITIAL ads
+	@Test
+	public void testInterstitialAds_Sync_Slot320x480_Creative320x480() {
+		String slotSize = "320x480";
+		String creative = "320x480";				// These variables are to be parameterized
+		String releaseType = "xhtml_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		this.inflateInterstitialLayout("portrait");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// gen click event
+		solo.clickOnScreen(100, 100);
+		utils.waitThread(7000);
+	} // end testInterstitialAds
+
+
+	// ################################################################################
+	// Test cases for INTERSTITIAL ads
+	@Test
+	public void testInterstitialAds_Sync_Slot320x480_Creative300x250() {
+		String slotSize = "320x480";
+		String creative = "300x250";				// These variables are to be parameterized
+		String releaseType = "xhtml_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		this.inflateInterstitialLayout("portrait");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// gen click event
+		solo.clickOnScreen(100, 100);
+		utils.waitThread(7000);
+	} // end testInterstitialAds
+
+	// ################################################################################
+	// Test cases for INTERSTITIAL ads
+	@Test
+	public void testInterstitialAds_Sync_Slot320x480_Creative600x500() {
+		String slotSize = "320x480";
+		String creative = "600x500";				// These variables are to be parameterized
+		String releaseType = "xhtml_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		this.inflateInterstitialLayout("portrait");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// gen click event
+		solo.clickOnScreen(100, 100);
+		utils.waitThread(7000);
+	} // end testInterstitialAds
+
+	// ################################################################################
+	// Test cases for INTERSTITIAL ads
+	@Test
+	public void testInterstitialAds_Sync_Slot320x480_Creative640x960() {
+		String slotSize = "320x480";
+		String creative = "640x960";				// These variables are to be parameterized
+		String releaseType = "xhtml_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		this.inflateInterstitialLayout("portrait");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// gen click event
+		solo.clickOnScreen(100, 100);
+		utils.waitThread(7000);
+
+	} // end testInterstitialAds
+
+	
+	
+	
+	// ############################################################################################################
+	// ##################### LANDSCAPE MODE ########################
+	@Test
+	public void testInterstitialAds_Async_Slot480x320_Creative480x320() {
+		String slotSize = "320x480";
+		String creative = "320x480";				// These variables are to be parameterized
+		String releaseType = "xhtml_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// gen click event
+		solo.clickOnScreen(100, 100);
+		utils.waitThread(7000);
+	} // end testInterstitialAds
+
+
+	// ################################################################################
+	// Test cases for INTERSTITIAL ads
+	@Test
+	public void testInterstitialAds_Async_Slot480x320_Creative300x250() {
+		String slotSize = "320x480";
+		String creative = "300x250";				// These variables are to be parameterized
+		String releaseType = "xhtml_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// gen click event
+		solo.clickOnScreen(100, 100);
+		utils.waitThread(7000);
+	} // end testInterstitialAds
+
+	// ################################################################################
+	// Test cases for INTERSTITIAL ads
+	@Test
+	public void testInterstitialAds_Async_Slot480x320_Creative600x500() {
+		String slotSize = "320x480";
+		String creative = "600x500";				// These variables are to be parameterized
+		String releaseType = "xhtml_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// gen click event
+		solo.clickOnScreen(100, 100);
+		utils.waitThread(7000);
+	} // end testInterstitialAds
+
+	// ################################################################################
+	// Test cases for INTERSTITIAL ads
+	@Test
+	public void testInterstitialAds_Async_Slot480x320_Creative960x640() {
+		String slotSize = "320x480";
+		String creative = "640x960";				// These variables are to be parameterized
+		String releaseType = "xhtml_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// gen click event
+		solo.clickOnScreen(100, 100);
+		utils.waitThread(7000);
+	} // end testInterstitialAds
+
+
+	// ################################################################################
+	// #########	SYNC TESTS ##########
+	// Test cases for INTERSTITIAL ads
+	@Test
+	public void testInterstitialAds_Sync_Slot480x320_Creative480x320() {
+		String slotSize = "320x480";
+		String creative = "320x480";				// These variables are to be parameterized
+		String releaseType = "xhtml_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// gen click event
+		solo.clickOnScreen(100, 100);
+		utils.waitThread(7000);
+	} // end testInterstitialAds
+
+
+	// ################################################################################
+	// Test cases for INTERSTITIAL ads
+	@Test
+	public void testInterstitialAds_Sync_Slot480x320_Creative300x250() {
+		String slotSize = "320x480";
+		String creative = "300x250";				// These variables are to be parameterized
+		String releaseType = "xhtml_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// gen click event
+		solo.clickOnScreen(100, 100);
+		utils.waitThread(7000);
+	} // end testInterstitialAds
+
+	// ################################################################################
+	// Test cases for INTERSTITIAL ads
+	@Test
+	public void testInterstitialAds_Sync_Slot480x320_Creative600x500() {
+		String slotSize = "320x480";
+		String creative = "600x500";				// These variables are to be parameterized
+		String releaseType = "xhtml_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// gen click event
+		solo.clickOnScreen(100, 100);
+		utils.waitThread(7000);
+	} // end testInterstitialAds
+
+	// ################################################################################
+	// Test cases for INTERSTITIAL ads
+	@Test
+	public void testInterstitialAds_Sync_Slot480x320_Creative960x640() {
+		String slotSize = "320x480";
+		String creative = "640x960";				// These variables are to be parameterized
+		String releaseType = "xhtml_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// gen click event
+		solo.clickOnScreen(100, 100);
+		utils.waitThread(7000);
+	} // end testInterstitialAds
+	
+	
+	
+	// ################################################################################
+	/* 					TABLET RELATED TESTS EXECUTION FROM BELOW					*/
+	// ################################################################################
+	// Test cases for INTERSTITIAL ads
+	@Test
+	public void testInterstitialAds_Async_Slot800x1280_Creative800x1280() {
+		String slotSize = "800X1280";
+		String creative = "800X1280";				// These variables are to be parameterized
+		String releaseType = "xhtml_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// gen click event
+		solo.clickOnScreen(100, 100);
+		utils.waitThread(7000);
+	} // end testInterstitialAds
+	
+	
+	@Test
+	public void testInterstitialAds_Async_Slot800x1280_Creative1600x2560() {
+		String slotSize = "800X1280";
+		String creative = "1600x2560";				// These variables are to be parameterized
+		String releaseType = "xhtml_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// gen click event
+		solo.clickOnScreen(100, 100);
+		utils.waitThread(7000);
+	} // end testInterstitialAds
+
+	// Test cases for INTERSTITIAL ads
+	@Test
+	public void testInterstitialAds_Async_Slot1280x800_Creative1280x800() {
+		String slotSize = "1280x800";
+		String creative = "1280x800";				// These variables are to be parameterized
+		String releaseType = "xhtml_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// gen click event
+		solo.clickOnScreen(100, 100);
+		utils.waitThread(7000);
+	} // end testInterstitialAds
+	
+	
+	@Test
+	public void testInterstitialAds_Async_Slot1280x800_Creative2560x1600() {
+		String slotSize = "1280x800";
+		String creative = "2560x1600";				// These variables are to be parameterized
+		String releaseType = "xhtml_async";		// These variables are to be parameterized
+		String testCaseId = getName();
+
+		// building the request url parameters:
+		urlParams.put("testcaseid", testCaseId);
+		urlParams.put("release", releaseType);
+		urlParams.put("adtype", adtype);
+		urlParams.put("slotid", slotSize);
+		urlParams.put("creative", creative);
+		
+		String adServerURL = utils.buildAdServerURI(urlParams);	// method to build ad-server url with test params
+		Log.d(LOG_TAG, "URL: " + adServerURL);
+
+		this.inflateInterstitialLayout("landscape");			// inflating layout based on slot-size
+		utils.setAdServerURI(imAdInterstitialViewObj, adServerURL);
+		Log.d(LOG_TAG, " adServerURL - " + adServerURL);
+
+		utils.loadAndShowInterstitialAd(imAdInterstitialViewObj, testActivity);		
+		String snapshotFile = getName() + testCaseId.toString();
+		solo.takeScreenshot(snapshotFile);
+
+		// gen click event
+		solo.clickOnScreen(100, 100);
+		utils.waitThread(7000);
+	} // end testInterstitialAds
 
 	
 	// ##############################################################################################################################
@@ -825,6 +828,7 @@ public class InterstitialTests362 extends ActivityInstrumentationTestCase2<InMob
 	
 	// #############################################	Generic utility functions for interstitials	###########################################################################
 	public void inflateInterstitialLayout (final String orientationType) {
+		//utils.waitThread(7000);
 		testActivity.runOnUiThread(new Runnable() {
 			public void run() {
 				imAdInterstitialViewObj = new IMAdInterstitial(testActivity, "appid123");

@@ -13,7 +13,9 @@ import android.os.Looper;
 import android.util.Log;
 
 import com.inmobi.androidsdk.IMAdInterstitial;
+import com.inmobi.androidsdk.IMAdInterstitialListener;
 import com.inmobi.androidsdk.IMAdInterstitial.State;
+import com.inmobi.androidsdk.IMAdRequest.ErrorCode;
 import com.inmobi.androidsdk.IMAdView;
 
 public class Utils {
@@ -28,18 +30,51 @@ public class Utils {
 	
 	
 	// ##############################################################################################################################
-	public void loadAndShowInterstitialAd(final IMAdInterstitial imAdInterstitialViewObj, Activity testActivity) {
+	public void loadAndShowInterstitialAd(final IMAdInterstitial imAdInterstitialViewObj, final Activity testActivity) {
+		
+		imAdInterstitialViewObj.setIMAdInterstitialListener(new IMAdInterstitialListener() {
+			
+			public void onShowAdScreen(IMAdInterstitial arg0) {
+				// TODO Auto-generated method stub
+			}
+			
+			public void onLeaveApplication(IMAdInterstitial arg0) {
+				// TODO Auto-generated method stub
+			}
+			
+			public void onDismissAdScreen(IMAdInterstitial arg0) {
+				// TODO Auto-generated method stub
+			}
+			
+			public void onAdRequestLoaded(IMAdInterstitial arg0) {
+				testActivity.runOnUiThread(new Runnable() {
+					public void run() {
+						
+						boolean wFlag = false;
+						while (!wFlag) {
+							if (imAdInterstitialViewObj.getState() == State.READY) {
+								imAdInterstitialViewObj.show();
+								wFlag = true;
+							} else {
+								waitThread(2000);
+							}
+							
+						}
+					}
+				});
+				
+			}
+			
+			public void onAdRequestFailed(IMAdInterstitial arg0, ErrorCode arg1) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
 		imAdInterstitialViewObj.loadNewAd();
 		this.waitThread(3000);
 		
-		testActivity.runOnUiThread(new Runnable() {
-			public void run() {
-				if (imAdInterstitialViewObj.getState() == State.READY) {
-					imAdInterstitialViewObj.show();
-					//waitThread(5000);
-				}
-			}
-		});
+
 		
 		this.waitThread(3000);
 	}

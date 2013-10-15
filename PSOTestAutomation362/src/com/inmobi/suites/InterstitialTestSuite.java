@@ -1,4 +1,4 @@
-/*package com.inmobi.suites;
+package com.inmobi.suites;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -18,9 +18,9 @@ public class InterstitialTestSuite extends TestSuite {
 
 		TestSuite suite = new TestSuite();
 		String[] devicesToExec = {"smartphone" }; //, "tablet"};
-		boolean flexiMode = true;
-		boolean portraitMode = false;
-		boolean landscapeMode = false;
+		boolean flexiMode = false;
+		boolean portraitMode = true;
+		boolean landscapeMode = true;
 
 		// Variables - Portrait 
 		String[] boltTypeListPortrait = { "Async" };//, "Sync" };
@@ -116,4 +116,3 @@ public class InterstitialTestSuite extends TestSuite {
 	}	// end Suite()
 
 }	// end InterstitialTestSuite()
-*/
