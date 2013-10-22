@@ -23,14 +23,14 @@ public class InterstitialTestSuite extends TestSuite {
 		boolean landscapeMode = true;
 
 		// Variables - Portrait 
-		String[] boltTypeListPortrait = { "Async" };//, "Sync" };
+		String[] boltTypeListPortrait = { "Async", "Sync" };
 		String[] slotListPortrait = { "320x480" };
-		String[] creativeListPortrait = { "300x250" };//, "320x480"	, "600x500", "640x960" };
+		String[] creativeListPortrait = { "300x250", "320x480"	, "600x500", "640x960" };
 
 		// Variables - Landscape 
 		String[] boltTypeListLandscape = { "Async", "Sync" };
 		String[] slotListLandscape = { "480x320" };
-		String[] creativeListLandscape = { "300x250" }; //, "600x500", "480x320", "960x640" };
+		String[] creativeListLandscape = { "300x250", "600x500", "480x320", "960x640" };
 
 		String[] boltTypeListPortraitTablets = { "Async", "Sync" };
 		String[] slotListPortraitTablets = { "800x1280" };

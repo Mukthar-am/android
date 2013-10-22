@@ -73,7 +73,10 @@ public class Utils {
 		
 		imAdInterstitialViewObj.loadNewAd();
 		this.waitThread(3000);
+		
 
+		
+		this.waitThread(3000);
 	}
 
 	// #############################################################################################################################
@@ -180,14 +183,19 @@ public class Utils {
 		// build platform string using device info
 		deviceDetails.put("os", "Android");
 		deviceDetails.put("devicename", Build.MODEL);
+		Log.d(LOG_TAG, "GET DEVICE DETAILS FROM THIS: " + deviceDetails.get("devicename").toString());
 		String model = null;
+		
 		if ( deviceDetails.get("devicename").equalsIgnoreCase("gt-i9300") ) {			// fetching model name mappings should be moved to a config/properties file.	
 			model = "S3";
 		} else if (deviceDetails.get("devicename").equalsIgnoreCase("gt-i9100") ) {
 			model = "S2";
+		} else if ( deviceDetails.get("devicename").equalsIgnoreCase("HTC EVO 3D X515m") ) {
+			model = "EVO-3D";	// a big string with spaces was causing response servlet to fail with exception.
 		} else {
-			Log.d("\n" + LOG_TAG, deviceDetails.get("devicename") + " - Device is not registered in the code base... " + "\n");
+			Log.d("\n" + LOG_TAG, deviceDetails.get("devicename") + " - If, device mobdel tends to be \"null\", then device is not registered in the code base... " + "\n");
 		}
+		
 		deviceDetails.put("osversion", Build.VERSION.RELEASE);
 		deviceDetails.put("manufacturer", Build.MANUFACTURER);
 		deviceDetails.put("handset", deviceDetails.get("manufacturer") + "-" + model);

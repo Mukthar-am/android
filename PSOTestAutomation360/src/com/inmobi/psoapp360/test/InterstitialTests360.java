@@ -817,15 +817,16 @@ public class InterstitialTests360 extends ActivityInstrumentationTestCase2<InMob
 	
 	// ##############################################################################################################################
 	@After
-	protected void tearDown() throws Exception {
-		// super.tearDown();	
+	protected void tearDown() throws Exception {	
 		try {
 			solo.finalize();
 		} catch (Throwable e) {
 			e.printStackTrace();
 			getActivity().finish();
-			super.tearDown();
 		}
+		
+		super.tearDown();	// this is expected to be outside of try-catch for SDK-3.6.x/SDK-3.5.x series
+		
 	}
 	
 	// #############################################	Generic utility functions for interstitials	###########################################################################
